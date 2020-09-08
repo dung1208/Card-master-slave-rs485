@@ -1,0 +1,4 @@
+"Main.obj",
+"ADC0831.obj",
+"LCD4Bit.obj" 
+TO "Interfacing Serial ADC0831 To 8051 (AT89C51)" 

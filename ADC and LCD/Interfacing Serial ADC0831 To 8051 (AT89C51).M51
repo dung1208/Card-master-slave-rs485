@@ -1,0 +1,418 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/08/2020  02:01:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Main.obj, ADC0831.obj, LCD4Bit.obj TO Interfacing Serial ADC0831 To 8051 (AT89C51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  Main.obj (MAIN)
+  ADC0831.obj (ADC0831)
+  LCD4Bit.obj (LCD4BIT)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?COPY)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (PRINTF)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CSTPTR)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CCASE)
+  C:\KEIL\C51\LIB\C51S.LIB (PUTCHAR)
+
+
+LINK MAP OF MODULE:  Interfacing Serial ADC0831 To 8051 (AT89C51) (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            BIT     0020H.0   0001H.1   UNIT         _BIT_GROUP_
+                    0021H.1   0000H.7                *** GAP ***
+            DATA    0022H     004AH     UNIT         _DATA_GROUP_
+            IDATA   006CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     035CH     UNIT         ?PR?PRINTF?PRINTF
+            CODE    035FH     01D9H     UNIT         ?C?LIB_CODE
+            CODE    0538H     00FFH     UNIT         ?PR?MAIN?MAIN
+            CODE    0637H     0037H     UNIT         ?PR?_PRINT_LCD?LCD4BIT
+            CODE    066EH     002EH     UNIT         ?PR?INIT_LCD?LCD4BIT
+            CODE    069CH     0027H     UNIT         ?PR?PUTCHAR?PUTCHAR
+            CODE    06C3H     0025H     UNIT         ?PR?_WRITE_NIBBLE_LCD?LCD4BIT
+            CODE    06E8H     0024H     UNIT         ?CO?MAIN
+            CODE    070CH     0021H     UNIT         ?PR?_GOTOXY_LCD?LCD4BIT
+            CODE    072DH     001DH     UNIT         ?PR?DELAY?MAIN
+            CODE    074AH     001DH     UNIT         ?PR?DELAY_LCD?LCD4BIT
+            CODE    0767H     0019H     UNIT         ?PR?READADC08311?ADC0831
+            CODE    0780H     0019H     UNIT         ?PR?READADC08312?ADC0831
+            CODE    0799H     0013H     UNIT         ?PR?_WRITE_LCD?LCD4BIT
+            CODE    07ACH     000DH     UNIT         ?PR?INITSYSTEM?MAIN
+            CODE    07B9H     000DH     UNIT         ?PR?INITADC0831?ADC0831
+            CODE    07C6H     000CH     UNIT         ?C_C51STARTUP
+            CODE    07D2H     0005H     UNIT         ?PR?_PUTC_LCD?LCD4BIT
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2020  02:01:10  PAGE 2
+
+
+
+
+OVERLAY MAP OF MODULE:   Interfacing Serial ADC0831 To 8051 (AT89C51) (MAIN)
+
+
+SEGMENT                                  BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT                 START    LENGTH     START    LENGTH
+-------------------------------------------------------------------------
+?C_C51STARTUP                         -----    -----      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                         -----    -----      0022H    0036H
+  +--> ?CO?MAIN
+  +--> ?PR?INITSYSTEM?MAIN
+  +--> ?PR?READADC08311?ADC0831
+  +--> ?PR?READADC08312?ADC0831
+  +--> ?PR?PRINTF?PRINTF
+  +--> ?PR?_GOTOXY_LCD?LCD4BIT
+  +--> ?PR?_PRINT_LCD?LCD4BIT
+  +--> ?PR?DELAY?MAIN
+
+?PR?INITSYSTEM?MAIN                   -----    -----      -----    -----
+  +--> ?PR?INITADC0831?ADC0831
+  +--> ?PR?INIT_LCD?LCD4BIT
+  +--> ?PR?_GOTOXY_LCD?LCD4BIT
+
+?PR?INIT_LCD?LCD4BIT                  -----    -----      -----    -----
+  +--> ?PR?_WRITE_NIBBLE_LCD?LCD4BIT
+  +--> ?PR?DELAY_LCD?LCD4BIT
+  +--> ?PR?_WRITE_LCD?LCD4BIT
+
+?PR?_WRITE_LCD?LCD4BIT                -----    -----      005DH    0001H
+  +--> ?PR?_WRITE_NIBBLE_LCD?LCD4BIT
+  +--> ?PR?DELAY_LCD?LCD4BIT
+
+?PR?_GOTOXY_LCD?LCD4BIT               -----    -----      0058H    0002H
+  +--> ?PR?_WRITE_LCD?LCD4BIT
+
+?PR?PRINTF?PRINTF                     0020H.0  0001H.1    0058H    0014H
+  +--> ?PR?PUTCHAR?PUTCHAR
+
+?PR?_PRINT_LCD?LCD4BIT                -----    -----      0058H    0005H
+  +--> ?PR?_PUTC_LCD?LCD4BIT
+
+?PR?_PUTC_LCD?LCD4BIT                 -----    -----      -----    -----
+  +--> ?PR?_WRITE_LCD?LCD4BIT
+
+
+
+SYMBOL TABLE OF MODULE:  Interfacing Serial ADC0831 To 8051 (AT89C51) (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:072DH         PUBLIC        delay
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2020  02:01:10  PAGE 3
+
+
+  C:07ACH         PUBLIC        InitSystem
+  C:0538H         PUBLIC        main
+  C:0702H         SYMBOL        _?ix1000
+  C:0707H         SYMBOL        _?ix1001
+  -------         PROC          INITSYSTEM
+  C:07ACH         LINE#         7
+  C:07ACH         LINE#         8
+  C:07ACH         LINE#         9
+  C:07AFH         LINE#         10
+  C:07B2H         LINE#         11
+  -------         ENDPROC       INITSYSTEM
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:072DH         LINE#         13
+  C:072DH         LINE#         14
+  C:072DH         LINE#         16
+  C:0730H         LINE#         17
+  C:0730H         LINE#         18
+  C:0733H         LINE#         19
+  C:073EH         LINE#         20
+  C:0749H         LINE#         21
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0007H         SYMBOL        i1
+  D:0022H         SYMBOL        Msg1
+  D:0036H         SYMBOL        AverageValue1
+  D:0038H         SYMBOL        Sample1
+  D:0007H         SYMBOL        i2
+  D:003DH         SYMBOL        Msg2
+  D:0051H         SYMBOL        AverageValue2
+  D:0053H         SYMBOL        Sample2
+  -------         ENDDO         
+  C:0538H         LINE#         22
+  C:0538H         LINE#         23
+  C:0538H         LINE#         27
+  C:054BH         LINE#         32
+  C:055EH         LINE#         34
+  C:0561H         LINE#         35
+  C:0561H         LINE#         36
+  C:0561H         LINE#         37
+  C:0566H         LINE#         38
+  C:0568H         LINE#         39
+  C:0568H         LINE#         40
+  C:0574H         LINE#         41
+  C:0582H         LINE#         42
+  C:0584H         LINE#         43
+  C:0589H         LINE#         44
+  C:0593H         LINE#         45
+  C:05A1H         LINE#         47
+  C:05A6H         LINE#         48
+  C:05A8H         LINE#         49
+  C:05A8H         LINE#         50
+  C:05B4H         LINE#         51
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2020  02:01:10  PAGE 4
+
+
+  C:05C2H         LINE#         52
+  C:05C4H         LINE#         53
+  C:05C9H         LINE#         54
+  C:05D3H         LINE#         55
+  C:05E1H         LINE#         56
+  C:05F9H         LINE#         57
+  C:0600H         LINE#         58
+  C:0609H         LINE#         59
+  C:0621H         LINE#         60
+  C:0628H         LINE#         61
+  C:0631H         LINE#         62
+  C:0634H         LINE#         64
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ADC0831
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  B:0080H.3       PUBLIC        adc_CLK1
+  B:0080H.6       PUBLIC        adc_CLK2
+  C:07B9H         PUBLIC        InitADC0831
+  C:0767H         PUBLIC        ReadADC08311
+  C:0780H         PUBLIC        ReadADC08312
+  B:0080H.2       PUBLIC        adc_CS1
+  B:0080H.5       PUBLIC        adc_CS2
+  B:0080H.4       PUBLIC        adc_DATA1
+  B:0080H.7       PUBLIC        adc_DATA2
+  -------         PROC          INITADC0831
+  C:07B9H         LINE#         12
+  C:07B9H         LINE#         13
+  C:07B9H         LINE#         14
+  C:07BBH         LINE#         15
+  C:07BDH         LINE#         16
+  C:07BFH         LINE#         18
+  C:07C1H         LINE#         19
+  C:07C3H         LINE#         20
+  C:07C5H         LINE#         21
+  -------         ENDPROC       INITADC0831
+  -------         PROC          READADC08311
+  -------         DO            
+  D:0007H         SYMBOL        Data1
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0767H         LINE#         23
+  C:0767H         LINE#         24
+  C:0767H         LINE#         27
+  C:0769H         LINE#         29
+  C:076BH         LINE#         30
+  C:076BH         LINE#         31
+  C:076DH         LINE#         32
+  C:0771H         LINE#         33
+  C:0777H         LINE#         34
+  C:0779H         LINE#         35
+  C:077DH         LINE#         36
+  C:077FH         LINE#         37
+  C:077FH         LINE#         38
+  -------         ENDPROC       READADC08311
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2020  02:01:10  PAGE 5
+
+
+  -------         PROC          READADC08312
+  -------         DO            
+  D:0007H         SYMBOL        Data2
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0780H         LINE#         40
+  C:0780H         LINE#         41
+  C:0780H         LINE#         44
+  C:0782H         LINE#         46
+  C:0784H         LINE#         47
+  C:0784H         LINE#         48
+  C:0786H         LINE#         49
+  C:078AH         LINE#         50
+  C:0790H         LINE#         51
+  C:0792H         LINE#         52
+  C:0796H         LINE#         53
+  C:0798H         LINE#         54
+  C:0798H         LINE#         55
+  -------         ENDPROC       READADC08312
+  -------         ENDMOD        ADC0831
+
+  -------         MODULE        LCD4BIT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:06C3H         PUBLIC        _write_nibble_lcd
+  B:00A0H.2       PUBLIC        RS
+  C:074AH         PUBLIC        delay_lcd
+  B:00A0H.3       PUBLIC        En
+  C:0799H         PUBLIC        _write_lcd
+  C:070CH         PUBLIC        _gotoxy_lcd
+  C:0637H         PUBLIC        _print_lcd
+  C:066EH         PUBLIC        init_lcd
+  C:07D2H         PUBLIC        _putc_lcd
+  B:00A0H.4       PUBLIC        D0
+  B:00A0H.5       PUBLIC        D1
+  B:00A0H.6       PUBLIC        D2
+  B:00A0H.7       PUBLIC        D3
+  -------         PROC          INIT_LCD
+  C:066EH         LINE#         12
+  C:066EH         LINE#         13
+  C:066EH         LINE#         14
+  C:0670H         LINE#         15
+  C:0678H         LINE#         16
+  C:0680H         LINE#         17
+  C:0688H         LINE#         18
+  C:068DH         LINE#         19
+  C:0692H         LINE#         20
+  C:0697H         LINE#         21
+  -------         ENDPROC       INIT_LCD
+  -------         PROC          _GOTOXY_LCD
+  D:0058H         SYMBOL        col
+  D:0059H         SYMBOL        line
+  C:070CH         LINE#         24
+  C:0710H         LINE#         25
+  C:0710H         LINE#         26
+  C:0712H         LINE#         27
+  C:0717H         LINE#         28
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2020  02:01:10  PAGE 6
+
+
+  C:071FH         LINE#         29
+  C:0724H         LINE#         30
+  C:072CH         LINE#         31
+  -------         ENDPROC       _GOTOXY_LCD
+  -------         PROC          _PUTC_LCD
+  D:0007H         SYMBOL        byte
+  C:07D2H         LINE#         33
+  C:07D2H         LINE#         34
+  C:07D2H         LINE#         35
+  C:07D4H         LINE#         36
+  -------         ENDPROC       _PUTC_LCD
+  -------         PROC          _PRINT_LCD
+  D:0058H         SYMBOL        String
+  -------         DO            
+  D:005BH         SYMBOL        i
+  -------         ENDDO         
+  C:0637H         LINE#         39
+  C:063DH         LINE#         40
+  C:063DH         LINE#         41
+  C:0642H         LINE#         43
+  C:0642H         LINE#         44
+  C:0655H         LINE#         45
+  C:065DH         LINE#         46
+  C:065DH         LINE#         47
+  C:066DH         LINE#         48
+  -------         ENDPROC       _PRINT_LCD
+  -------         PROC          DELAY_LCD
+  -------         DO            
+  D:0006H         SYMBOL        del1
+  D:0004H         SYMBOL        del2
+  -------         ENDDO         
+  C:074AH         LINE#         50
+  C:074AH         LINE#         51
+  C:074AH         LINE#         53
+  C:074DH         LINE#         54
+  C:074DH         LINE#         55
+  C:075BH         LINE#         56
+  C:0766H         LINE#         57
+  -------         ENDPROC       DELAY_LCD
+  -------         PROC          _WRITE_LCD
+  D:005DH         SYMBOL        Val
+  C:0799H         LINE#         59
+  C:079BH         LINE#         60
+  C:079BH         LINE#         61
+  C:07A4H         LINE#         62
+  C:07A9H         LINE#         63
+  -------         ENDPROC       _WRITE_LCD
+  -------         PROC          _WRITE_NIBBLE_LCD
+  D:0007H         SYMBOL        Val
+  C:06C3H         LINE#         66
+  C:06C3H         LINE#         67
+  C:06C3H         LINE#         68
+  C:06C5H         LINE#         69
+  C:06CDH         LINE#         70
+  C:06D1H         LINE#         71
+  C:06D3H         LINE#         72
+  C:06D7H         LINE#         73
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/08/2020  02:01:10  PAGE 7
+
+
+  C:06D9H         LINE#         74
+  C:06DDH         LINE#         75
+  C:06DFH         LINE#         76
+  C:06E3H         LINE#         77
+  C:06E5H         LINE#         78
+  C:06E7H         LINE#         79
+  -------         ENDPROC       _WRITE_NIBBLE_LCD
+  -------         ENDMOD        LCD4BIT
+
+  -------         MODULE        ?C?COPY
+  C:042FH         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0455H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?UIDIV
+  C:0482H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        PRINTF
+  D:0058H         PUBLIC        ?_PRINTF517?BYTE
+  D:0058H         PUBLIC        ?_PRINTF?BYTE
+  D:0058H         PUBLIC        ?_SPRINTF517?BYTE
+  D:0058H         PUBLIC        ?_SPRINTF?BYTE
+  C:0065H         PUBLIC        _PRINTF
+  C:0065H         PUBLIC        _PRINTF517
+  C:005FH         PUBLIC        _SPRINTF
+  C:005FH         PUBLIC        _SPRINTF517
+  -------         ENDMOD        PRINTF
+
+  -------         MODULE        ?C?CLDPTR
+  C:04D7H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CSTPTR
+  C:04F0H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?PLDIIDATA
+  C:0502H         PUBLIC        ?C?PLDIIDATA
+  -------         ENDMOD        ?C?PLDIIDATA
+
+  -------         MODULE        ?C?CCASE
+  C:0512H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+  -------         MODULE        PUTCHAR
+  C:069CH         PUBLIC        _PUTCHAR
+  -------         ENDMOD        PUTCHAR
+
+Program Size: data=84.1 xdata=0 code=2007
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

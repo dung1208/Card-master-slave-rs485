@@ -1,0 +1,105 @@
+C51 COMPILER V9.01   LCD4BIT                                                               09/08/2020 01:35:34 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE LCD4BIT
+OBJECT MODULE PLACED IN LCD4Bit.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LCD4Bit.c DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          
+   2          #include <AT89x51.h>
+   3          #include "lcd4bit.h"
+   4          
+   5          sbit RS = P2^2;
+   6          sbit En = P2^3;
+   7          sbit D0 = P2^4;
+   8          sbit D1 = P2^5;
+   9          sbit D2 = P2^6;
+  10          sbit D3 = P2^7;
+  11          
+  12          void init_lcd (void)
+  13          {
+  14   1        RS = Lo;
+  15   1        write_nibble_lcd(0x03);       delay_lcd();
+  16   1        write_nibble_lcd(0x03);       delay_lcd();
+  17   1        write_nibble_lcd(0x02);       delay_lcd();
+  18   1        write_lcd(0x28);
+  19   1        write_lcd(0x06);
+  20   1        write_lcd(0x0c);
+  21   1        write_lcd(0x01);
+  22   1      }  
+  23          
+  24          void gotoxy_lcd(unsigned char col,unsigned char line)
+  25          {
+  26   1              RS = Lo;
+  27   1              if (line == 1)
+  28   1                      write_lcd(0x7f+col);
+  29   1              if (line == 2)
+  30   1                      write_lcd(0xbf+col);
+  31   1      }
+  32          
+  33          void putc_lcd(unsigned char byte)
+  34          {
+  35   1         RS = Hi;
+  36   1         write_lcd(byte);
+  37   1      }
+  38          
+  39          void print_lcd(char String[])
+  40          {
+  41   1              int i = 0;
+  42   1              do
+  43   1              {
+  44   2                      putc_lcd(String[i]);
+  45   2              i++;
+  46   2              }
+  47   1              while(String[i] != '\0');
+  48   1      }
+  49          
+  50          void delay_lcd (void)
+  51          {
+  52   1              int del1,del2;
+  53   1              for(del1=0;del1<10;del1++)
+  54   1              {
+  55   2              for(del2=0;del2<200;del2++);
+C51 COMPILER V9.01   LCD4BIT                                                               09/08/2020 01:35:34 PAGE 2   
+
+  56   2              }
+  57   1      }
+  58          
+  59          void write_lcd(unsigned char Val)
+  60          {
+  61   1              write_nibble_lcd(Val >> 4);
+  62   1              write_nibble_lcd(Val);
+  63   1              delay_lcd();
+  64   1      }
+  65          
+  66          void write_nibble_lcd(unsigned char Val)
+  67          {
+  68   1              En = Hi;
+  69   1              D0 = D1 = D2 = D3 = 0;
+  70   1              if(Val & 0x01)
+  71   1                      D0 = 1;
+  72   1              if(Val & 0x02)
+  73   1                      D1 = 1;
+  74   1              if(Val & 0x04)
+  75   1                      D2 = 1;
+  76   1              if(Val & 0x08)
+  77   1                      D3 = 1;
+  78   1              En = Lo;
+  79   1      }
+  80          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    224    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
